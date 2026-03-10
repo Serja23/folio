@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serja Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:radial-gradient(circle at top,#1a1a1a,#0b0b0b 60%);
+  color:white;
+}
+
+/* NAVBAR */
+
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:70px;
+  background:#000;
+  display:flex;
+  align-items:center;
+  padding:0 40px;
+  z-index:100;
+  box-shadow:0 2px 20px rgba(0,0,0,0.5);
+}
+
+.logo{
+  font-size:22px;
+  font-weight:700;
+  text-decoration:none;
+  color:white;
+}
+
+/* HERO */
+
+.hero{
+  padding-top:140px;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:64px;
+  margin:0;
+  font-weight:700;
+}
+
+
+
+/* TITRES */
+
+.section-title-left{
+  font-size:26px;
+  font-weight:600;
+  margin:0 0 34px 0;
+}
+
+.section-title-center{
+  text-align:center;
+  font-size:36px;
+  margin-top:120px;
+  margin-bottom:40px;
+}
+
+/* BANDEAU CREATEURS (PLUS PETIT) */
+
+.trusted-wrapper{
+  width:100%;
+  margin-top:80px;
+  padding:0 0;
+}
+
+.trusted-container{
+  background:#070707;
+  border-radius:0;
+  padding:40px 60px;
+  width:100%;
+  max-width:none;
+  border-top:1px solid rgba(255,255,255,0.05);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  box-sizing:border-box;
+}
+
+.trusted-section{
+  position:relative;
+  overflow:hidden;
+  padding:6px 0 10px 0;
+  margin:0;
+}
+
+.scroll{
+  display:flex;
+  width:max-content;
+  gap:0;
+  animation:scroll 40s linear infinite;
+}
+
+.creator{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin:0 40px;
+  font-size:14px;
+  opacity:0.9;
+}
+
+/* halo propre derrière l'avatar */
+.creator::before{
+  content:"";
+  position:absolute;
+  top:-4px;
+  width:82px;
+  height:82px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 38%, rgba(255,255,255,0) 72%);
+  opacity:0;
+  transition:opacity 0.25s ease, transform 0.25s ease;
+  z-index:0;
+}
+
+.creator:hover::before{
+  opacity:1;
+  transform:scale(1.15);
+}
+
+.creator img{
+  width:68px;
+  height:68px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:8px;
+  border:2px solid rgba(255,255,255,0.08);
+  box-shadow:0 8px 20px rgba(0,0,0,0.6);
+  transition:transform 0.25s ease, box-shadow 0.25s ease;
+  position:relative;
+  z-index:1;
+}
+
+.creator:hover img{
+  transform:scale(1.12);
+  box-shadow:0 12px 30px rgba(0,0,0,0.8);
+}
+
+
+
+/* FLOU CARROUSEL */
+
+.trusted-section::before,
+.trusted-section::after{
+  content:"";
+  position:absolute;
+  top:0;
+  width:120px;
+  height:100%;
+  z-index:2;
+  pointer-events:none;
+}
+
+.trusted-section::before{
+  left:0;
+  background:linear-gradient(to right,#070707,transparent);
+}
+
+.trusted-section::after{
+  right:0;
+  background:linear-gradient(to left,#070707,transparent);
+}
+
+@keyframes scroll{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
+}
+
+/* FILTRES */
+
+.filters{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  margin-bottom:50px;
+  flex-wrap:wrap;
+}
+
+.filter-btn{
+  padding:10px 18px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.1);
+  background:#111;
+  color:#ddd;
+  cursor:pointer;
+  transition:0.25s;
+  font-size:14px;
+}
+
+.filter-btn:hover{
+  background:#1f1f1f;
+}
+
+.filter-btn.active{
+  background:#ff4fa3;
+  color:white;
+  border:none;
+}
+
+/* GALERIE */
+
+.gallery{
+  padding:0 80px 100px 80px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:28px;
+}
+
+.thumb{
+  position:relative;
+  background:#141414;
+  border-radius:16px;
+  overflow:hidden;
+  transition:all 0.3s ease;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+  opacity:0;
+  transform:translateY(40px);
+  cursor:pointer;
+  aspect-ratio:16 / 9;
+}
+
+.thumb.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.thumb img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  transition:transform 0.4s;
+}
+
+/* HOVER THUMBNAIL */
+
+.thumb:hover img{
+  transform:scale(1.08);
+}
+
+.thumb:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 50px rgba(0,0,0,0.7);
+}
+
+.thumb:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 50px rgba(0,0,0,0.7);
+}
+
+/* LIGHTBOX */
+
+.lightbox{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.9);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:0.3s;
+  z-index:200;
+}
+
+.lightbox.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.lightbox img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:10px;
+}
+
+.hidden{
+  display:none;
+}
+
+footer{
+  text-align:center;
+  padding:40px;
+  color:#666;
+  font-size:14px;
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+
+</style>
+</head>
+
+<body id="top">
+
+<div class="navbar">
+<a class="logo" href="#top">Serja.</a>
+</div>
+
+<section class="hero">
+<h1>Serja Portfolio</h1>
+
+</section>
+
+<div class="trusted-wrapper">
+
+<div class="trusted-container">
+
+<h2 class="section-title-left">Ils m'ont fait confiance</h2>
+
+<section class="trusted-section">
+
+<div class="scroll">
+
+<div class="creator"><img src="file:///C:/Users/benab/Desktop/josplay.png"><span>Josplay</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/8984FP2UaboitXapymaBcNPlolyhQ54_STgdsJnHxop-7w2sbInmd8et1ab4YKGmplFweg_F=s900-c-k-c0x00ffffff-no-rj"><span>Litsu</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/xKOdYSe_FypifiipEepA02FfQpR0kqmjTyNcAyks8rEN-fPRewJbDFGjkK3-BUaLduw1sTGM8Q=s900-c-k-c0x00ffffff-no-rj"><span>Hika</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/ExLzleUGzfSykdDeo_XCOkCHX73y4BgZAbwpjuz3IHP3pIyNPmr3KJ5hr-WFl9K6ENgkgHJv=s900-c-k-c0x00ffffff-no-rj"><span>Clinko</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/TV7MUGfZjW-YxuumKNrtAi9qJDM-CX5XcpmGVjJGuXC8hUxI6gECCGiKbUHdzyQ42W3-zpZB=s900-c-k-c0x00ffffff-no-rj"><span>Croshoot</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/Z10IRPnEvnmSu2GnThOCkHnuolrzfZGNiPTg6vy5xiQ0Y4u5ccEMfsaf05QlHb7tWbo6ooTsxA=s900-c-k-c0x00ffffff-no-rj"><span>Chadscience</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/X5CTp0ffLlyYy5dYgu-nhpcJB-hWALMADLCZd3AI-BxA4U4ZZXkZe6FQ2uijGxIFfunZzeEMlg=s900-c-k-c0x00ffffff-no-rj"><span>Lamatrak</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/C2CqxGpLNePGJFsRQUCs3YvEzbl8puonodXAMYiuv_rhFBTxiO9ckabbh3YUhbb8RuNA1_Bmtw=s900-c-k-c0x00ffffff-no-rj"><span>Litsu Roblox</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/DZZCfFhsa-Ba199jWRPHJQ85fSlSBrl59dqtP-G0juJyh_En3AsHDEgIVLxPVHoHsKPMRLfFDw=s900-c-k-c0x00ffffff-no-rj"><span>Naoxo</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/0T4Gq9O0GxkCBBuB5TxLpf-AMv_LpuOCNDMLOhIxUGk8j6xkSehfYqhwOkunwxy75ZlITKbtntY=s900-c-k-c0x00ffffff-no-rj"><span>Diams</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/GxFSQ7r5T6w_wQhrz9tvi3Nar8xF-DaI1nDFRqC5aBjn2ogqeAulNzqlriC7iJsHzCS00VUY4RA=s900-c-k-c0x00ffffff-no-rj"><span>Peurle</span></div>
+
+<div class="creator"><img src="file:///C:/Users/benab/Desktop/josplay.png"><span>Josplay</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/8984FP2UaboitXapymaBcNPlolyhQ54_STgdsJnHxop-7w2sbInmd8et1ab4YKGmplFweg_F=s900-c-k-c0x00ffffff-no-rj"><span>Litsu</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/xKOdYSe_FypifiipEepA02FfQpR0kqmjTyNcAyks8rEN-fPRewJbDFGjkK3-BUaLduw1sTGM8Q=s900-c-k-c0x00ffffff-no-rj"><span>Hika</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/ExLzleUGzfSykdDeo_XCOkCHX73y4BgZAbwpjuz3IHP3pIyNPmr3KJ5hr-WFl9K6ENgkgHJv=s900-c-k-c0x00ffffff-no-rj"><span>Clinko</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/TV7MUGfZjW-YxuumKNrtAi9qJDM-CX5XcpmGVjJGuXC8hUxI6gECCGiKbUHdzyQ42W3-zpZB=s900-c-k-c0x00ffffff-no-rj"><span>Croshoot</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/Z10IRPnEvnmSu2GnThOCkHnuolrzfZGNiPTg6vy5xiQ0Y4u5ccEMfsaf05QlHb7tWbo6ooTsxA=s900-c-k-c0x00ffffff-no-rj"><span>ChadScience</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/X5CTp0ffLlyYy5dYgu-nhpcJB-hWALMADLCZd3AI-BxA4U4ZZXkZe6FQ2uijGxIFfunZzeEMlg=s900-c-k-c0x00ffffff-no-rj"><span>Lamatrak</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/C2CqxGpLNePGJFsRQUCs3YvEzbl8puonodXAMYiuv_rhFBTxiO9ckabbh3YUhbb8RuNA1_Bmtw=s900-c-k-c0x00ffffff-no-rj"><span>Litsu Roblox</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/DZZCfFhsa-Ba199jWRPHJQ85fSlSBrl59dqtP-G0juJyh_En3AsHDEgIVLxPVHoHsKPMRLfFDw=s900-c-k-c0x00ffffff-no-rj"><span>Naoxo</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/0T4Gq9O0GxkCBBuB5TxLpf-AMv_LpuOCNDMLOhIxUGk8j6xkSehfYqhwOkunwxy75ZlITKbtntY=s900-c-k-c0x00ffffff-no-rj"><span>Diams</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/GxFSQ7r5T6w_wQhrz9tvi3Nar8xF-DaI1nDFRqC5aBjn2ogqeAulNzqlriC7iJsHzCS00VUY4RA=s900-c-k-c0x00ffffff-no-rj"><span>Peurle</span></div>
+
+<div class="creator"><img src="file:///C:/Users/benab/Desktop/josplay.png"><span>Josplay</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/8984FP2UaboitXapymaBcNPlolyhQ54_STgdsJnHxop-7w2sbInmd8et1ab4YKGmplFweg_F=s900-c-k-c0x00ffffff-no-rj"><span>Litsu</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/xKOdYSe_FypifiipEepA02FfQpR0kqmjTyNcAyks8rEN-fPRewJbDFGjkK3-BUaLduw1sTGM8Q=s900-c-k-c0x00ffffff-no-rj"><span>Hika</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/ExLzleUGzfSykdDeo_XCOkCHX73y4BgZAbwpjuz3IHP3pIyNPmr3KJ5hr-WFl9K6ENgkgHJv=s900-c-k-c0x00ffffff-no-rj"><span>Clinko</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/TV7MUGfZjW-YxuumKNrtAi9qJDM-CX5XcpmGVjJGuXC8hUxI6gECCGiKbUHdzyQ42W3-zpZB=s900-c-k-c0x00ffffff-no-rj"><span>Croshoot</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/Z10IRPnEvnmSu2GnThOCkHnuolrzfZGNiPTg6vy5xiQ0Y4u5ccEMfsaf05QlHb7tWbo6ooTsxA=s900-c-k-c0x00ffffff-no-rj"><span>ChadScience</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/X5CTp0ffLlyYy5dYgu-nhpcJB-hWALMADLCZd3AI-BxA4U4ZZXkZe6FQ2uijGxIFfunZzeEMlg=s900-c-k-c0x00ffffff-no-rj"><span>Lamatrak</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/C2CqxGpLNePGJFsRQUCs3YvEzbl8puonodXAMYiuv_rhFBTxiO9ckabbh3YUhbb8RuNA1_Bmtw=s900-c-k-c0x00ffffff-no-rj"><span>Litsu Roblox</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/DZZCfFhsa-Ba199jWRPHJQ85fSlSBrl59dqtP-G0juJyh_En3AsHDEgIVLxPVHoHsKPMRLfFDw=s900-c-k-c0x00ffffff-no-rj"><span>Naoxo</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/0T4Gq9O0GxkCBBuB5TxLpf-AMv_LpuOCNDMLOhIxUGk8j6xkSehfYqhwOkunwxy75ZlITKbtntY=s900-c-k-c0x00ffffff-no-rj"><span>Diams</span></div>
+<div class="creator"><img src="https://yt3.googleusercontent.com/GxFSQ7r5T6w_wQhrz9tvi3Nar8xF-DaI1nDFRqC5aBjn2ogqeAulNzqlriC7iJsHzCS00VUY4RA=s900-c-k-c0x00ffffff-no-rj"><span>Peurle</span></div>
+
+</div>
+
+</section>
+
+</div>
+
+</div>
+
+<h2 class="section-title-center">Mes réalisations</h2>
+
+<div class="filters">
+<button class="filter-btn active" data-filter="all">Tout</button>
+<button class="filter-btn" data-filter="gaming">Gaming</button>
+<button class="filter-btn" data-filter="irl">IRL</button>
+<button class="filter-btn" data-filter="storytelling">Storytelling</button>
+<button class="filter-btn" data-filter="popculture">Popculture</button>
+<button class="filter-btn" data-filter="dessin">Dessin</button>
+<button class="filter-btn" data-filter="business">Business</button>
+<button class="filter-btn" data-filter="autre">Autre</button>
+</div>
+
+<section class="gallery" id="gallery">
+
+<div class="thumb" data-category="storytelling" data-date="1000-03-01"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/2745cf0d-1c5c-4e34-aee4-4366c474070b_rw_1920.png?h=6eb4b97d9e4eccc6c6ca6e9b798c1a00"></div>
+<div class="thumb" data-category="popculture" data-date="1001-02-10"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/6c646f3c-574a-46c7-876b-0b74084f8882_rw_1920.png?h=4095d24b42571036ce2222cc680b2e67"></div>
+<div class="thumb" data-category="storytelling" data-date="1002-01-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/strayed.png"></div>
+<div class="thumb" data-category="storytelling dessin" data-date="1003-01-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/tauposefemmegeek.png"></div>
+<div class="thumb" data-category="gaming" data-date="1004-01-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/litsu100jours60s.png"></div>
+<div class="thumb" data-category="gaming dessin" data-date="1005-01-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/miniature-Hops.png"></div>
+<div class="thumb" data-category="gaming" data-date="1006-01-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/miniature-simon-psd.png"></div>
+<div class="thumb" data-category="irl" data-date="1007-01-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/foottiktok.png"></div>
+<div class="thumb" data-category="irl" data-date="1008-01-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/minia-histoire-client.png"></div>
+<div class="thumb" data-category="business" data-date="1009-01-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/croshoot-2026.png"></div>
+<div class="thumb" data-category="irl gaming" data-date="1010-01-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/litsucoursecadillev2.png"></div>
+<div class="thumb" data-category="gaming" data-date="1011-01-20"><img src="C:\Users\benab\Desktop\photoshop rd\croshootcartemoins-cher-adversaire.png"></div>
+<div class="thumb" data-category="popculture" data-date="1012-01-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/plagiatcartoonabdal.png"></div>
+<div class="thumb" data-category="storytelling" data-date="1003-01-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/9d8f23b1-0391-41ef-9278-9e9f6885d496_rw_1920.png?h=cac3a0e4cf1683911ca5c06fa980a6b1"></div>
+<div class="thumb" data-category="storytelling" data-date="1003-03-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/e5617d10-e052-4eac-b114-1bbb31a31d09_rw_1920.png?h=77b9dbda783f8370737163336a73c746"></div>
+<div class="thumb" data-category="popculture" data-date="1015-01-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/f6bf15e8-d83b-434d-b79b-53130f79a2f6_rw_1920.png?h=5b10e27c18f29cc6a6919e8caaa3226e"></div>
+<div class="thumb" data-category="storytelling" data-date="1016-01-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/3b417de9-2993-4eb6-a25f-5bd295240a8c_rw_1920.png?h=c8ecd513304c46d22f2d3b689f9c99f3"></div>
+<div class="thumb" data-category="gaming" data-date="1016-02-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/61830220-7e13-4822-961c-c529b408893f_rw_1920.png?h=df0db7424f329e4c70880b847f820c2f"></div>
+<div class="thumb" data-category="gaming" data-date="1016-03-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/croshootpirechoix.png"></div>
+<div class="thumb" data-category="gaming" data-date="1016-04-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/litsutheforge.png"></div>
+<div class="thumb" data-category="gaming" data-date="1016-05-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/serjanoi'mnotahuman.png"></div>
+<div class="thumb" data-category="gaming" data-date="1016-06-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/mdepoppyplaytimechap5.png"></div>
+<div class="thumb" data-category="dessin" data-date="1016-03-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/68b58279-9033-4371-a0fb-2302d8817528_rw_1920.png?h=5d636a5b0fe3df79a6c822c0139cc761"></div>
+<div class="thumb" data-category="dessin" data-date="1016-04-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/cc6d75db-2116-49fe-8adf-89b0eb21b246_rw_1920.png?h=7af7407ca0864c1ff4e965894b07a133"></div>
+<div class="thumb" data-category="dessin" data-date="1016-05-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/69c2d977-895c-41eb-ac9e-f9769cf357c3_rw_1920.png?h=0f69d4628c2922568c521118c05a19cd"></div>
+<div class="thumb" data-category="dessin" data-date="1016-06-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/281e6ff2-f304-4979-9e26-c6e0b2a63040_rw_1920.jpg?h=7c162333abf15687a13d9159857df721"></div>
+<div class="thumb" data-category="dessin" data-date="1016-03-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/678494fc-453d-4312-b0d3-ec0c6cb0d43c_rw_1920.png?h=85eed79aab262dda8744c1d7625a11a1"></div>
+<div class="thumb" data-category="dessin" data-date="1016-04-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/2f7d6ba1-2824-4cae-a3ea-b20a04aaad07_rw_1920.png?h=a7324a2fbb6bf6b803e542a05157e63e"></div>
+<div class="thumb" data-category="dessin" data-date="1016-05-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/75cc885b-f8cb-495c-b4c4-5cc098cf58d3_rw_1920.png?h=170fc2affce28384beef57f91216a06a"></div>
+<div class="thumb" data-category="dessin" data-date="1016-06-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/76fb8adf-07bc-4359-a7f3-8a0777ca94f0_rw_1920.png?h=c2468cf7bfd0b1d14698bf3521595b68"></div>
+<div class="thumb" data-category="irl" data-date="1017-03-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/winterwalibi.png"></div>
+<div class="thumb" data-category="storytelling" data-date="1017-04-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/clippinghorreurv2.png"></div>
+<div class="thumb" data-category="gaming irl" data-date="1017-05-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/croshootcreatifv3.png"></div>
+<div class="thumb" data-category="irl" data-date="1017-06-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/clinkoquiestcev4.png"></div>
+<div class="thumb" data-category="storytelling" data-date="1018-03-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/TakehikoinoueVF).png"></div>
+<div class="thumb" data-category="irl gaming" data-date="1018-04-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/clinkolave.png"></div>
+<div class="thumb" data-category="irl" data-date="1018-05-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/clinkoskatev4.png"></div>
+<div class="thumb" data-category="gaming" data-date="1018-06-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/lebuigzzhorreur-parcour.png"></div>
+<div class="thumb" data-category="gaming" data-date="1019-03-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/litsuproneige.png"></div>
+<div class="thumb" data-category="popculture" data-date="1019-04-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/angelo-la-d%C3%A9brouille-miniav2.png"></div>
+<div class="thumb" data-category="business" data-date="1019-05-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/hikaminiature7joursyoutube.png"></div>
+<div class="thumb" data-category="gaming" data-date="1020-06-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/Diams99nuit.png"></div>
+<div class="thumb" data-category="popculture" data-date="1020-03-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/icebergblulock2.png"></div>
+<div class="thumb" data-category="irl business" data-date="1020-04-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/minaturevinted.png"></div>
+<div class="thumb" data-category="gaming" data-date="1020-05-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/croshoot0joueurs.png"></div>
+<div class="thumb" data-category="gaming" data-date="1020-06-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/litsusaintvalentin.png"></div>
+<div class="thumb" data-category="gaming" data-date="1021-03-20"><img src="https://cdn.discordapp.com/attachments/1460223704448372801/1470531716538957989/image.png?ex=69b08ce2&is=69af3b62&hm=7f469c6e69ac69e4970c6e652184f152800589b5763adae904502c5b9ca4d70a&"></div>
+<div class="thumb" data-category="gaming" data-date="1021-04-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/croshootcochon.png"></div>
+<div class="thumb" data-category="gaming irl" data-date="1021-05-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/litsuarmecorrompu.png"></div>
+<div class="thumb" data-category="gaming" data-date="1021-06-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/croshootedgargay.png"></div>
+<div class="thumb" data-category="business" data-date="1023-03-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/podcast-jayzz.png"></div>
+<div class="thumb" data-category="business" data-date="1023-04-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/podcast-hika.png"></div>
+<div class="thumb" data-category="business" data-date="1023-05-20"><img src="file:///C:/Users/benab/Desktop/photoshop%20rd/hikacourbev2.png"></div>
+
+
+
+</section>
+
+<div class="lightbox" id="lightbox">
+<img src="" id="lightbox-img">
+</div>
+
+<footer>
+© 2026 Serja
+</footer>
+
+<script>
+
+/* TRI PAR DATE (PLUS RECENT D'ABORD) */
+
+const gallery = document.getElementById('gallery');
+const thumbsArray = Array.from(gallery.querySelectorAll('.thumb'));
+
+thumbsArray
+.sort((a,b)=> new Date(b.dataset.date||0) - new Date(a.dataset.date||0))
+.forEach(el=>gallery.appendChild(el));
+
+const buttons = document.querySelectorAll('.filter-btn');
+const items = document.querySelectorAll('.thumb');
+
+buttons.forEach(btn=>{
+btn.addEventListener('click',()=>{
+buttons.forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+const filter = btn.dataset.filter;
+items.forEach(item=>{
+if(filter==='all'){
+item.classList.remove('hidden');
+return;
+}
+const categories = (item.dataset.category || "").split(" ");
+if(categories.includes(filter)){
+item.classList.remove('hidden');
+}else{
+item.classList.add('hidden');
+}
+});
+});
+});
+
+/* ANIMATION AU SCROLL */
+
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if(entry.isIntersecting){
+entry.target.classList.add('visible');
+}
+});
+});
+
+items.forEach(el=>observer.observe(el));
+
+
+
+/* LIGHTBOX */
+
+const lightbox=document.getElementById('lightbox');
+const lightboxImg=document.getElementById('lightbox-img');
+
+items.forEach(item=>{
+item.addEventListener('click',()=>{
+const img=item.querySelector('img');
+lightboxImg.src=img.src;
+lightbox.classList.add('active');
+});
+});
+
+lightbox.addEventListener('click',()=>{
+lightbox.classList.remove('active');
+});
+
+</script>
+
+</body>
+</html>
