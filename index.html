@@ -1,684 +1,1434 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Serja Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Serja Portfolio</title>
+  <meta name="description" content="Portfolio de Serja : miniatures YouTube, illustrations et visuels premium pour créateurs et marques.">
 
-<style>
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Serja Portfolio">
+  <meta property="og:description" content="Miniatures YouTube, illustrations et visuels premium pour créateurs et marques.">
+  <meta property="og:url" content="https://TON-URL.github.io/">
+  <meta property="og:image" content="https://TON-URL.github.io/images/og-cover.jpg">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Serja Portfolio">
 
-body{
-  margin:0;
-  font-family:'Inter',sans-serif;
-  background:radial-gradient(circle at top,#1a1a1a,#0b0b0b 60%);
-  color:white;
-}
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Serja Portfolio">
+  <meta name="twitter:description" content="Miniatures YouTube, illustrations et visuels premium pour créateurs et marques.">
+  <meta name="twitter:image" content="https://TON-URL.github.io/images/og-cover.jpg">
 
-/* NAVBAR */
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
 
-.navbar{
-  position:fixed;
-  top:0;
-  width:100%;
-  height:70px;
-  background:#000;
-  display:flex;
-  align-items:center;
-  padding:0 40px;
-  z-index:100;
-  box-shadow:0 2px 20px rgba(0,0,0,0.5);
-}
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-.logo{
-  font-size:22px;
-  font-weight:700;
-  text-decoration:none;
-  color:white;
-}
+  <style>
+    *{
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
 
-/* HERO */
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(255,79,163,0.12), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06), transparent 20%),
+        linear-gradient(180deg,#0b0b0b 0%, #070707 100%);
+      color:white;
+      overflow-x:hidden;
+    }
 
-.hero{
-  padding-top:140px;
-  text-align:center;
-}
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
 
-.hero h1{
-  font-size:64px;
-  margin:0;
-  font-weight:700;
-}
+    img{
+      max-width:100%;
+      display:block;
+    }
 
+    .navbar{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:78px;
+      background:rgba(0,0,0,0.78);
+      backdrop-filter:blur(14px);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 40px;
+      z-index:1000;
+      border-bottom:1px solid rgba(255,255,255,0.06);
+      box-shadow:0 8px 30px rgba(0,0,0,0.35);
+    }
 
+    .logo{
+      font-size:24px;
+      font-weight:800;
+      color:white;
+      letter-spacing:-0.5px;
+    }
 
-/* TITRES */
+    .nav-links{
+      display:flex;
+      gap:28px;
+      align-items:center;
+    }
 
-.section-title-left{
-  font-size:26px;
-  font-weight:600;
-  margin:0 0 34px 0;
-}
+    .nav-links a{
+      color:#d7d7d7;
+      font-size:14px;
+      transition:0.25s ease;
+    }
 
-.section-title-center{
-  text-align:center;
-  font-size:36px;
-  margin-top:120px;
-  margin-bottom:40px;
-}
+    .nav-links a:hover{
+      color:white;
+    }
 
-/* BANDEAU CREATEURS (PLUS PETIT) */
+    .nav-contact{
+      padding:10px 18px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#ff4fa3,#ff7bc0);
+      color:white !important;
+      font-weight:600;
+      box-shadow:0 10px 25px rgba(255,79,163,0.25);
+    }
 
-.trusted-wrapper{
-  width:100%;
-  margin-top:80px;
-  padding:0 0;
-}
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:140px 20px 80px;
+      position:relative;
+    }
 
-.trusted-container{
-  background:#070707;
-  border-radius:0;
-  padding:40px 60px;
-  width:100%;
-  max-width:none;
-  border-top:1px solid rgba(255,255,255,0.05);
-  border-bottom:1px solid rgba(255,255,255,0.05);
-  box-sizing:border-box;
-}
+    .hero-content{
+      max-width:920px;
+      margin:0 auto;
+    }
 
-.trusted-section{
-  position:relative;
-  overflow:hidden;
-  padding:6px 0 10px 0;
-  margin:0;
-}
+    .hero-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 16px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:999px;
+      color:#d9d9d9;
+      font-size:14px;
+      margin-bottom:24px;
+      backdrop-filter:blur(10px);
+    }
 
-.scroll{
-  display:flex;
-  width:max-content;
-  gap:0;
-  animation:scroll 40s linear infinite;
-}
+    .hero-badge::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#55ff8b;
+      box-shadow:0 0 12px #55ff8b;
+    }
 
-.creator{
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  margin:0 40px;
-  font-size:14px;
-  opacity:0.9;
-}
+    .hero h1{
+      font-size:clamp(44px, 8vw, 82px);
+      line-height:0.95;
+      margin:0;
+      font-weight:800;
+      letter-spacing:-2px;
+      background:linear-gradient(180deg,#ffffff 0%, #d8d8d8 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
 
-/* halo propre derrière l'avatar */
-.creator::before{
-  content:"";
-  position:absolute;
-  top:-4px;
-  width:82px;
-  height:82px;
-  border-radius:50%;
-  background:radial-gradient(circle, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 38%, rgba(255,255,255,0) 72%);
-  opacity:0;
-  transition:opacity 0.25s ease, transform 0.25s ease;
-  z-index:0;
-}
+    .hero h1 span{
+      background:linear-gradient(135deg,#ff4fa3,#ff87c7);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
 
-.creator:hover::before{
-  opacity:1;
-  transform:scale(1.15);
-}
+    .hero-subtitle{
+      margin:26px auto 0;
+      max-width:760px;
+      font-size:18px;
+      line-height:1.7;
+      color:#b9b9b9;
+    }
 
-.creator img{
-  width:68px;
-  height:68px;
-  border-radius:50%;
-  object-fit:cover;
-  margin-bottom:8px;
-  border:2px solid rgba(255,255,255,0.08);
-  box-shadow:0 8px 20px rgba(0,0,0,0.6);
-  transition:transform 0.25s ease, box-shadow 0.25s ease;
-  position:relative;
-  z-index:1;
-}
+    .hero-buttons{
+      display:flex;
+      justify-content:center;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-top:34px;
+    }
 
-.creator:hover img{
-  transform:scale(1.12);
-  box-shadow:0 12px 30px rgba(0,0,0,0.8);
-}
+    .btn-primary,
+    .btn-secondary{
+      padding:14px 24px;
+      border-radius:999px;
+      font-weight:600;
+      transition:0.25s ease;
+      font-size:15px;
+    }
 
+    .btn-primary{
+      background:linear-gradient(135deg,#ff4fa3,#ff7bc0);
+      color:white;
+      box-shadow:0 14px 35px rgba(255,79,163,0.28);
+    }
 
+    .btn-primary:hover{
+      transform:translateY(-3px);
+      box-shadow:0 18px 40px rgba(255,79,163,0.36);
+    }
 
-/* FLOU CARROUSEL */
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,0.1);
+      background:rgba(255,255,255,0.03);
+      color:white;
+    }
 
-.trusted-section::before,
-.trusted-section::after{
-  content:"";
-  position:absolute;
-  top:0;
-  width:120px;
-  height:100%;
-  z-index:2;
-  pointer-events:none;
-}
+    .btn-secondary:hover{
+      background:rgba(255,255,255,0.08);
+      transform:translateY(-3px);
+    }
 
-.trusted-section::before{
-  left:0;
-  background:linear-gradient(to right,#070707,transparent);
-}
+    .section-title-left{
+      font-size:26px;
+      font-weight:700;
+      margin:0 0 34px;
+      letter-spacing:-0.5px;
+    }
 
-.trusted-section::after{
-  right:0;
-  background:linear-gradient(to left,#070707,transparent);
-}
+    .section-title-center{
+      text-align:center;
+      font-size:40px;
+      margin:0 0 16px;
+      font-weight:800;
+      letter-spacing:-1px;
+    }
 
-@keyframes scroll{
-  from{ transform:translateX(0); }
-  to{ transform:translateX(-50%); }
-}
+    .section-subtitle{
+      text-align:center;
+      max-width:720px;
+      margin:0 auto 48px;
+      color:#a8a8a8;
+      line-height:1.7;
+      font-size:16px;
+    }
 
-/* FILTRES */
+    .section{
+      padding:110px 24px 0;
+    }
 
-.filters{
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  margin-bottom:50px;
-  flex-wrap:wrap;
-}
+    .container{
+      max-width:1320px;
+      margin:0 auto;
+    }
 
-.filter-btn{
-  padding:10px 18px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,0.1);
-  background:#111;
-  color:#ddd;
-  cursor:pointer;
-  transition:0.25s;
-  font-size:14px;
-}
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+      margin-top:-20px;
+      margin-bottom:90px;
+    }
 
-.filter-btn:hover{
-  background:#1f1f1f;
-}
+    .stat{
+      background:linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:22px;
+      padding:28px 20px;
+      text-align:center;
+      box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    }
 
-.filter-btn.active{
-  background:#ff4fa3;
-  color:white;
-  border:none;
-}
+    .stat strong{
+      display:block;
+      font-size:34px;
+      font-weight:800;
+      color:white;
+      margin-bottom:8px;
+    }
 
-/* GALERIE */
+    .stat span{
+      color:#a7a7a7;
+      font-size:14px;
+    }
 
-.gallery{
-  padding:0 80px 100px 80px;
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
-  gap:28px;
-}
+    .trusted-wrapper{
+      width:100%;
+      margin-top:0;
+    }
 
-.thumb{
-  position:relative;
-  background:#141414;
-  border-radius:16px;
-  overflow:hidden;
-  transition:all 0.3s ease;
-  box-shadow:0 10px 30px rgba(0,0,0,0.4);
-  opacity:0;
-  transform:translateY(40px);
-  cursor:pointer;
-  aspect-ratio:16 / 9;
-}
+    .trusted-container{
+      background:#070707;
+      padding:46px 0;
+      width:100%;
+      border-top:1px solid rgba(255,255,255,0.05);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+      overflow:hidden;
+    }
 
-.thumb.visible{
-  opacity:1;
-  transform:translateY(0);
-}
+    .trusted-inner{
+      max-width:1320px;
+      margin:0 auto;
+      padding:0 24px;
+    }
 
-.thumb img{
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:cover;
-  transition:transform 0.4s;
-}
+    .trusted-section{
+      position:relative;
+      overflow:hidden;
+      padding:8px 0 14px;
+    }
 
-/* HOVER THUMBNAIL */
+    .scroll{
+      display:flex;
+      width:max-content;
+      gap:0;
+      animation:scroll 45s linear infinite;
+    }
 
-.thumb:hover img{
-  transform:scale(1.08);
-}
+    .creator{
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      margin:0 34px;
+      min-width:110px;
+      text-align:center;
+      opacity:0.92;
+    }
 
-.thumb:hover{
-  transform:translateY(-6px);
-  box-shadow:0 20px 50px rgba(0,0,0,0.7);
-}
+    .creator::before{
+      content:"";
+      position:absolute;
+      top:-6px;
+      width:86px;
+      height:86px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.08) 40%, rgba(255,255,255,0) 75%);
+      opacity:0;
+      transition:0.25s ease;
+      z-index:0;
+    }
 
-.thumb:hover{
-  transform:translateY(-6px);
-  box-shadow:0 20px 50px rgba(0,0,0,0.7);
-}
+    .creator:hover::before{
+      opacity:1;
+      transform:scale(1.1);
+    }
 
-/* LIGHTBOX */
+    .creator img{
+      width:70px;
+      height:70px;
+      border-radius:50%;
+      object-fit:cover;
+      border:2px solid rgba(255,255,255,0.08);
+      box-shadow:0 10px 25px rgba(0,0,0,0.6);
+      margin-bottom:10px;
+      transition:0.25s ease;
+      position:relative;
+      z-index:1;
+    }
 
-.lightbox{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.9);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  opacity:0;
-  pointer-events:none;
-  transition:0.3s;
-  z-index:200;
-}
+    .creator:hover img{
+      transform:scale(1.1);
+      box-shadow:0 14px 35px rgba(0,0,0,0.8);
+    }
 
-.lightbox.active{
-  opacity:1;
-  pointer-events:auto;
-}
+    .creator-name{
+      font-size:14px;
+      font-weight:600;
+      color:white;
+      line-height:1.2;
+      margin-bottom:4px;
+    }
 
-.lightbox img{
-  max-width:90%;
-  max-height:90%;
-  border-radius:10px;
-}
+    .creator-subs{
+      font-size:12px;
+      color:#909090;
+      line-height:1.2;
+    }
 
-.hidden{
-  display:none;
-}
+    .trusted-section::before,
+    .trusted-section::after{
+      content:"";
+      position:absolute;
+      top:0;
+      width:120px;
+      height:100%;
+      z-index:2;
+      pointer-events:none;
+    }
 
-footer{
-  text-align:center;
-  padding:40px;
-  color:#666;
-  font-size:14px;
-  border-top:1px solid rgba(255,255,255,0.05);
-}
+    .trusted-section::before{
+      left:0;
+      background:linear-gradient(to right,#070707,transparent);
+    }
 
-</style>
+    .trusted-section::after{
+      right:0;
+      background:linear-gradient(to left,#070707,transparent);
+    }
+
+    @keyframes scroll{
+      from{ transform:translateX(0); }
+      to{ transform:translateX(-50%); }
+    }
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+
+    .service-card{
+      background:linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:24px;
+      padding:28px;
+      transition:0.3s ease;
+      box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .service-card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(255,79,163,0.25);
+      box-shadow:0 16px 40px rgba(0,0,0,0.35);
+    }
+
+    .service-icon{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:22px;
+      background:rgba(255,79,163,0.12);
+      border:1px solid rgba(255,79,163,0.18);
+      margin-bottom:18px;
+    }
+
+    .service-card h3{
+      margin:0 0 10px;
+      font-size:21px;
+      font-weight:700;
+    }
+
+    .service-card p{
+      margin:0;
+      color:#aaaaaa;
+      line-height:1.7;
+      font-size:15px;
+    }
+
+    .filters{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      margin-bottom:54px;
+      flex-wrap:wrap;
+      padding:0 20px;
+    }
+
+    .filter-btn{
+      padding:11px 18px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.1);
+      background:#111;
+      color:#ddd;
+      cursor:pointer;
+      transition:0.25s;
+      font-size:14px;
+      font-family:inherit;
+    }
+
+    .filter-btn:hover{
+      background:#1d1d1d;
+      transform:translateY(-2px);
+    }
+
+    .filter-btn.active{
+      background:linear-gradient(135deg,#ff4fa3,#ff7bc0);
+      color:white;
+      border:none;
+      box-shadow:0 10px 25px rgba(255,79,163,0.2);
+    }
+
+    .gallery{
+      padding:0 24px 20px;
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+      gap:28px;
+      max-width:1320px;
+      margin:0 auto;
+    }
+
+    .thumb{
+      position:relative;
+      background:#141414;
+      border-radius:22px;
+      overflow:hidden;
+      transition:all 0.35s ease;
+      box-shadow:0 12px 30px rgba(0,0,0,0.4);
+      opacity:0;
+      transform:translateY(40px);
+      cursor:pointer;
+      aspect-ratio:16 / 9;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .thumb.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform 0.45s ease;
+    }
+
+    .thumb:hover img{
+      transform:scale(1.05);
+    }
+
+    .thumb:hover{
+      transform:translateY(-8px);
+      box-shadow:0 20px 50px rgba(0,0,0,0.7);
+      border-color:rgba(255,79,163,0.25);
+    }
+
+    .thumb-overlay{
+      display:none;
+    }
+
+    .hidden{
+      display:none;
+    }
+
+    .reviews-slider{
+      position:relative;
+      overflow:hidden;
+      width:100%;
+      margin-top:20px;
+    }
+
+    .reviews-slider::before,
+    .reviews-slider::after{
+      content:"";
+      position:absolute;
+      top:0;
+      width:120px;
+      height:100%;
+      z-index:2;
+      pointer-events:none;
+    }
+
+    .reviews-slider::before{
+      left:0;
+      background:linear-gradient(to right, #070707, transparent);
+    }
+
+    .reviews-slider::after{
+      right:0;
+      background:linear-gradient(to left, #070707, transparent);
+    }
+
+    .reviews-track{
+      display:flex;
+      gap:24px;
+      width:max-content;
+      animation:reviewsScroll 35s linear infinite;
+    }
+
+    .reviews-slider:hover .reviews-track{
+      animation-play-state:paused;
+    }
+
+    .review-card{
+      position:relative;
+      width:380px;
+      min-height:230px;
+      padding:26px 24px 22px;
+      border-radius:18px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:0 10px 30px rgba(0,0,0,0.35);
+      flex-shrink:0;
+    }
+
+    .review-quote{
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      background:#f1f1f1;
+      color:#111;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+      font-weight:800;
+      margin-bottom:18px;
+    }
+
+    .review-stars{
+      color:#ffd84d;
+      font-size:18px;
+      letter-spacing:2px;
+      margin-bottom:18px;
+    }
+
+    .review-text{
+      color:#d9d9d9;
+      font-size:18px;
+      line-height:1.6;
+      font-style:italic;
+      margin:0 0 26px;
+      min-height:86px;
+    }
+
+    .review-footer{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+
+    .review-footer img{
+      width:54px;
+      height:54px;
+      border-radius:50%;
+      object-fit:cover;
+      flex-shrink:0;
+    }
+
+    .review-footer h4{
+      margin:0 0 4px;
+      font-size:22px;
+      font-weight:700;
+      color:white;
+    }
+
+    .review-footer span{
+      color:#8f8f8f;
+      font-size:15px;
+      line-height:1.4;
+    }
+
+    @keyframes reviewsScroll{
+      from{ transform:translateX(0); }
+      to{ transform:translateX(-50%); }
+    }
+
+    .contact-box{
+      max-width:980px;
+      margin:0 auto;
+      text-align:center;
+      background:
+        radial-gradient(circle at top, rgba(255,79,163,0.12), transparent 40%),
+        linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:30px;
+      padding:54px 28px;
+      box-shadow:0 16px 40px rgba(0,0,0,0.3);
+    }
+
+    .contact-box p{
+      color:#b2b2b2;
+      line-height:1.8;
+      max-width:680px;
+      margin:14px auto 30px;
+    }
+
+    .contact-info{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:22px;
+    }
+
+    .contact-chip{
+      padding:13px 18px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      color:#eaeaea;
+      transition:0.25s ease;
+      font-size:14px;
+      font-weight:500;
+    }
+
+    .contact-chip:hover{
+      transform:translateY(-3px);
+      background:rgba(255,255,255,0.08);
+    }
+
+    .lightbox{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.92);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      opacity:0;
+      pointer-events:none;
+      transition:0.3s ease;
+      z-index:2000;
+      padding:20px;
+    }
+
+    .lightbox.active{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .lightbox img{
+      max-width:92%;
+      max-height:92%;
+      border-radius:16px;
+      box-shadow:0 20px 60px rgba(0,0,0,0.8);
+    }
+
+    footer{
+      text-align:center;
+      padding:60px 20px 36px;
+      color:#6e6e6e;
+      font-size:14px;
+      margin-top:110px;
+      border-top:1px solid rgba(255,255,255,0.05);
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(35px);
+      transition:0.7s ease;
+    }
+
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media (max-width:1100px){
+      .stats{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .services-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:850px){
+      .navbar{
+        padding:0 20px;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .gallery{
+        grid-template-columns:1fr;
+      }
+
+      .hero{
+        min-height:auto;
+        padding:140px 20px 70px;
+      }
+    }
+
+    @media (max-width:768px){
+      .review-card{
+        width:300px;
+        min-height:220px;
+        padding:22px 20px;
+      }
+
+      .review-text{
+        font-size:16px;
+        min-height:78px;
+      }
+
+      .review-footer h4{
+        font-size:18px;
+      }
+    }
+
+    @media (max-width:600px){
+      .stats{
+        grid-template-columns:1fr;
+      }
+
+      .section-title-center{
+        font-size:32px;
+      }
+
+      .hero-subtitle{
+        font-size:16px;
+      }
+
+      .creator{
+        margin:0 22px;
+      }
+    }
+  </style>
 </head>
-
 <body id="top">
 
-<div class="navbar">
-<a class="logo" href="#top">Serja.</a>
-</div>
-
-<section class="hero">
-<h1>Serja Portfolio</h1>
-
-</section>
-
-<div class="trusted-wrapper">
-
-<div class="trusted-container">
-
-<h2 class="section-title-left">Ils m'ont fait confiance</h2>
-
-<section class="trusted-section">
-
-<div class="scroll">
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/PfrgbkgW91pHwXhns9BNZf7OXmGkNQnolItthHARTKNfIsHDOWJ_fmPeB4pWUGeyTdW3Z39Q4Q=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Josplay</span>
-  <span class="creator-subs">540 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/8984FP2UaboitXapymaBcNPlolyhQ54_STgdsJnHxop-7w2sbInmd8et1ab4YKGmplFweg_F=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Litsu</span>
-  <span class="creator-subs">530k k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/xKOdYSe_FypifiipEepA02FfQpR0kqmjTyNcAyks8rEN-fPRewJbDFGjkK3-BUaLduw1sTGM8Q=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Hika</span>
-  <span class="creator-subs">860 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/ExLzleUGzfSykdDeo_XCOkCHX73y4BgZAbwpjuz3IHP3pIyNPmr3KJ5hr-WFl9K6ENgkgHJv=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Clinko</span>
-  <span class="creator-subs">341 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/TV7MUGfZjW-YxuumKNrtAi9qJDM-CX5XcpmGVjJGuXC8hUxI6gECCGiKbUHdzyQ42W3-zpZB=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Croshoot</span>
-  <span class="creator-subs">302 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/Z10IRPnEvnmSu2GnThOCkHnuolrzfZGNiPTg6vy5xiQ0Y4u5ccEMfsaf05QlHb7tWbo6ooTsxA=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Chadscience</span>
-  <span class="creator-subs">100 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/X5CTp0ffLlyYy5dYgu-nhpcJB-hWALMADLCZd3AI-BxA4U4ZZXkZe6FQ2uijGxIFfunZzeEMlg=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Lamatrak</span>
-  <span class="creator-subs">170 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/C2CqxGpLNePGJFsRQUCs3YvEzbl8puonodXAMYiuv_rhFBTxiO9ckabbh3YUhbb8RuNA1_Bmtw=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Litsu Roblox</span>
-  <span class="creator-subs">115 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/DZZCfFhsa-Ba199jWRPHJQ85fSlSBrl59dqtP-G0juJyh_En3AsHDEgIVLxPVHoHsKPMRLfFDw=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Naoxo</span>
-  <span class="creator-subs">192k k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/0T4Gq9O0GxkCBBuB5TxLpf-AMv_LpuOCNDMLOhIxUGk8j6xkSehfYqhwOkunwxy75ZlITKbtntY=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Diams</span>
-  <span class="creator-subs">70 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/GxFSQ7r5T6w_wQhrz9tvi3Nar8xF-DaI1nDFRqC5aBjn2ogqeAulNzqlriC7iJsHzCS00VUY4RA=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Peurle</span>
-  <span class="creator-subs">142 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/PfrgbkgW91pHwXhns9BNZf7OXmGkNQnolItthHARTKNfIsHDOWJ_fmPeB4pWUGeyTdW3Z39Q4Q=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Josplay</span>
-  <span class="creator-subs">540 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/8984FP2UaboitXapymaBcNPlolyhQ54_STgdsJnHxop-7w2sbInmd8et1ab4YKGmplFweg_F=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Litsu</span>
-  <span class="creator-subs">530k k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/xKOdYSe_FypifiipEepA02FfQpR0kqmjTyNcAyks8rEN-fPRewJbDFGjkK3-BUaLduw1sTGM8Q=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Hika</span>
-  <span class="creator-subs">860 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/ExLzleUGzfSykdDeo_XCOkCHX73y4BgZAbwpjuz3IHP3pIyNPmr3KJ5hr-WFl9K6ENgkgHJv=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Clinko</span>
-  <span class="creator-subs">341 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/TV7MUGfZjW-YxuumKNrtAi9qJDM-CX5XcpmGVjJGuXC8hUxI6gECCGiKbUHdzyQ42W3-zpZB=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Croshoot</span>
-  <span class="creator-subs">302 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/Z10IRPnEvnmSu2GnThOCkHnuolrzfZGNiPTg6vy5xiQ0Y4u5ccEMfsaf05QlHb7tWbo6ooTsxA=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Chadscience</span>
-  <span class="creator-subs">100 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/X5CTp0ffLlyYy5dYgu-nhpcJB-hWALMADLCZd3AI-BxA4U4ZZXkZe6FQ2uijGxIFfunZzeEMlg=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Lamatrak</span>
-  <span class="creator-subs">170 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/C2CqxGpLNePGJFsRQUCs3YvEzbl8puonodXAMYiuv_rhFBTxiO9ckabbh3YUhbb8RuNA1_Bmtw=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Litsu Roblox</span>
-  <span class="creator-subs">115 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/DZZCfFhsa-Ba199jWRPHJQ85fSlSBrl59dqtP-G0juJyh_En3AsHDEgIVLxPVHoHsKPMRLfFDw=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Naoxo</span>
-  <span class="creator-subs">192k k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/0T4Gq9O0GxkCBBuB5TxLpf-AMv_LpuOCNDMLOhIxUGk8j6xkSehfYqhwOkunwxy75ZlITKbtntY=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Diams</span>
-  <span class="creator-subs">70 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/GxFSQ7r5T6w_wQhrz9tvi3Nar8xF-DaI1nDFRqC5aBjn2ogqeAulNzqlriC7iJsHzCS00VUY4RA=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Peurle</span>
-  <span class="creator-subs">142 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/PfrgbkgW91pHwXhns9BNZf7OXmGkNQnolItthHARTKNfIsHDOWJ_fmPeB4pWUGeyTdW3Z39Q4Q=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Josplay</span>
-  <span class="creator-subs">540 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/8984FP2UaboitXapymaBcNPlolyhQ54_STgdsJnHxop-7w2sbInmd8et1ab4YKGmplFweg_F=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Litsu</span>
-  <span class="creator-subs">530k k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/xKOdYSe_FypifiipEepA02FfQpR0kqmjTyNcAyks8rEN-fPRewJbDFGjkK3-BUaLduw1sTGM8Q=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Hika</span>
-  <span class="creator-subs">860 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/ExLzleUGzfSykdDeo_XCOkCHX73y4BgZAbwpjuz3IHP3pIyNPmr3KJ5hr-WFl9K6ENgkgHJv=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Clinko</span>
-  <span class="creator-subs">341 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/TV7MUGfZjW-YxuumKNrtAi9qJDM-CX5XcpmGVjJGuXC8hUxI6gECCGiKbUHdzyQ42W3-zpZB=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Croshoot</span>
-  <span class="creator-subs">302 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/Z10IRPnEvnmSu2GnThOCkHnuolrzfZGNiPTg6vy5xiQ0Y4u5ccEMfsaf05QlHb7tWbo6ooTsxA=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Chadscience</span>
-  <span class="creator-subs">100 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/X5CTp0ffLlyYy5dYgu-nhpcJB-hWALMADLCZd3AI-BxA4U4ZZXkZe6FQ2uijGxIFfunZzeEMlg=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Lamatrak</span>
-  <span class="creator-subs">170 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/C2CqxGpLNePGJFsRQUCs3YvEzbl8puonodXAMYiuv_rhFBTxiO9ckabbh3YUhbb8RuNA1_Bmtw=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Litsu Roblox</span>
-  <span class="creator-subs">115 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/DZZCfFhsa-Ba199jWRPHJQ85fSlSBrl59dqtP-G0juJyh_En3AsHDEgIVLxPVHoHsKPMRLfFDw=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Naoxo</span>
-  <span class="creator-subs">192k k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/0T4Gq9O0GxkCBBuB5TxLpf-AMv_LpuOCNDMLOhIxUGk8j6xkSehfYqhwOkunwxy75ZlITKbtntY=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Diams</span>
-  <span class="creator-subs">70 k abonnés</span>
-</div>
-
-<div class="creator">
-  <img src="https://yt3.googleusercontent.com/GxFSQ7r5T6w_wQhrz9tvi3Nar8xF-DaI1nDFRqC5aBjn2ogqeAulNzqlriC7iJsHzCS00VUY4RA=s900-c-k-c0x00ffffff-no-rj">
-  <span class="creator-name">Peurle</span>
-  <span class="creator-subs">142 k abonnés</span>
-</div>
-</div>
-
-</section>
-
-</div>
-
-</div>
-
-<h2 class="section-title-center">Mes réalisations</h2>
-
-<div class="filters">
-<button class="filter-btn active" data-filter="all">Tout</button>
-<button class="filter-btn" data-filter="gaming">Gaming</button>
-<button class="filter-btn" data-filter="irl">IRL</button>
-<button class="filter-btn" data-filter="storytelling">Storytelling</button>
-<button class="filter-btn" data-filter="popculture">Popculture</button>
-<button class="filter-btn" data-filter="dessin">Dessin</button>
-<button class="filter-btn" data-filter="business">Business</button>
-<button class="filter-btn" data-filter="autre">Autre</button>
-</div>
-
-<section class="gallery" id="gallery">
-
-<div class="thumb" data-category="storytelling" data-date="1000-03-01"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/2745cf0d-1c5c-4e34-aee4-4366c474070b_rw_1920.png?h=6eb4b97d9e4eccc6c6ca6e9b798c1a00"></div>
-<div class="thumb" data-category="popculture" data-date="1001-02-10"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/6c646f3c-574a-46c7-876b-0b74084f8882_rw_1920.png?h=4095d24b42571036ce2222cc680b2e67"></div>
-<div class="thumb" data-category="storytelling" data-date="1002-01-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/78490211-9220-4b2d-8e23-8cee268a0b4a_rw_1920.png?h=467de757998db1d7965c1ed3b3a4a1f8"></div>
-<div class="thumb" data-category="storytelling dessin" data-date="1003-01-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/bb0c908a-3d40-46d6-8de3-639dcc54d0f3_rw_1920.png?h=c56d7077e09e339e3ce1b7288211feda"></div>
-<div class="thumb" data-category="gaming" data-date="1004-01-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/a3d5c985-14a6-44fe-9bac-bcbf49637723_rw_1920.png?h=1edecaa6509623911d0a88a0ebaea106"></div>
-<div class="thumb" data-category="gaming dessin" data-date="1005-01-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/4b1ecf13-8b3d-4233-9623-a76fca8bf577_rw_1920.png?h=2487d0e3d9f9c83da31d384954d31326"></div>
-<div class="thumb" data-category="gaming" data-date="1006-01-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/d1f5c6ed-d39a-459a-8ad8-54ccf31b9092_rw_1920.png?h=aa857cb7a085b88ee6d375e358b08f0d"></div>
-<div class="thumb" data-category="irl" data-date="1007-01-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/ed3981d9-9aca-4492-882a-4bd29529957e_rw_1920.png?h=6ac46400aaa4797d100fadcaaaa25da7"></div>
-<div class="thumb" data-category="irl" data-date="1008-01-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/ce3c44b0-741e-46d4-a2d8-3bfbf209a0ef_rw_1920.png?h=91844f9455ada1c66e97e510096a829e"></div>
-<div class="thumb" data-category="business" data-date="1009-01-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/6da1a7c0-19e5-424a-a013-26a696ff958b_rw_1920.png?h=e5ac9dc483733315389963e55909aea4"></div>
-<div class="thumb" data-category="irl gaming" data-date="1010-01-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/9615c0f9-3d70-4b6c-a3af-b1814db6e546_rw_1920.png?h=3e978e13dfc2584f398c0e7ab94bcce5"></div>
-<div class="thumb" data-category="gaming" data-date="1011-01-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/b6cccf2a-4f1c-48bd-abed-88bd33c85182_rw_1920.png?h=d6e276c802622e599483a967cd65048b"></div>
-<div class="thumb" data-category="popculture" data-date="1012-01-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/882e33db-3a13-496d-843b-e5f9438d9724_rw_1920.png?h=c333e526bee8f6bb1e4da52774caa8ac"></div>
-<div class="thumb" data-category="storytelling" data-date="1003-01-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/9d8f23b1-0391-41ef-9278-9e9f6885d496_rw_1920.png?h=cac3a0e4cf1683911ca5c06fa980a6b1"></div>
-<div class="thumb" data-category="storytelling" data-date="1003-03-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/e5617d10-e052-4eac-b114-1bbb31a31d09_rw_1920.png?h=77b9dbda783f8370737163336a73c746"></div>
-<div class="thumb" data-category="popculture" data-date="1015-01-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/f6bf15e8-d83b-434d-b79b-53130f79a2f6_rw_1920.png?h=5b10e27c18f29cc6a6919e8caaa3226e"></div>
-<div class="thumb" data-category="storytelling" data-date="1016-01-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/3b417de9-2993-4eb6-a25f-5bd295240a8c_rw_1920.png?h=c8ecd513304c46d22f2d3b689f9c99f3"></div>
-<div class="thumb" data-category="gaming" data-date="1016-02-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/61830220-7e13-4822-961c-c529b408893f_rw_1920.png?h=df0db7424f329e4c70880b847f820c2f"></div>
-<div class="thumb" data-category="gaming" data-date="1016-03-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/591e73c4-13de-4710-bafe-22823b22384b_rw_1920.png?h=367877acb97eee1b492bb1e142421866"></div>
-<div class="thumb" data-category="gaming" data-date="1016-04-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/e1aa487d-7c8a-4e11-9a14-864fc55aae37_rw_1920.png?h=1788b48380cd0d54c9588a772d5f412f"></div>
-<div class="thumb" data-category="gaming" data-date="1016-05-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/ccb1f207-afb3-40db-bbc9-ff60a4bd32f6_rw_1920.png?h=5ce83dfa87a2c01f97bec3228979fe63"></div>
-<div class="thumb" data-category="gaming" data-date="1016-06-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/3c663102-7eb5-4264-bf43-9334e47623eb_rw_1920.png?h=865a86fc0103ca35cf7eb9fad1df503c"></div>
-<div class="thumb" data-category="dessin" data-date="1016-03-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/68b58279-9033-4371-a0fb-2302d8817528_rw_1920.png?h=5d636a5b0fe3df79a6c822c0139cc761"></div>
-<div class="thumb" data-category="dessin" data-date="1016-04-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/cc6d75db-2116-49fe-8adf-89b0eb21b246_rw_1920.png?h=7af7407ca0864c1ff4e965894b07a133"></div>
-<div class="thumb" data-category="dessin" data-date="1016-05-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/69c2d977-895c-41eb-ac9e-f9769cf357c3_rw_1920.png?h=0f69d4628c2922568c521118c05a19cd"></div>
-<div class="thumb" data-category="dessin" data-date="1016-06-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/281e6ff2-f304-4979-9e26-c6e0b2a63040_rw_1920.jpg?h=7c162333abf15687a13d9159857df721"></div>
-<div class="thumb" data-category="dessin" data-date="1016-03-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/678494fc-453d-4312-b0d3-ec0c6cb0d43c_rw_1920.png?h=85eed79aab262dda8744c1d7625a11a1"></div>
-<div class="thumb" data-category="dessin" data-date="1016-04-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/2f7d6ba1-2824-4cae-a3ea-b20a04aaad07_rw_1920.png?h=a7324a2fbb6bf6b803e542a05157e63e"></div>
-<div class="thumb" data-category="dessin" data-date="1016-05-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/75cc885b-f8cb-495c-b4c4-5cc098cf58d3_rw_1920.png?h=170fc2affce28384beef57f91216a06a"></div>
-<div class="thumb" data-category="dessin" data-date="1016-06-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/76fb8adf-07bc-4359-a7f3-8a0777ca94f0_rw_1920.png?h=c2468cf7bfd0b1d14698bf3521595b68"></div>
-<div class="thumb" data-category="irl" data-date="1017-03-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/f37f9e77-cd1f-4d7d-83e3-85477db2e1ed_rw_1920.png?h=e0225d496ff0fa5067b16d76947d5326"></div>
-<div class="thumb" data-category="storytelling" data-date="1017-04-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/2d802daf-3505-478d-8d50-82f14fa72259_rw_1920.png?h=4028f565468a597cad1c26a228b23036"></div>
-<div class="thumb" data-category="gaming irl" data-date="1017-05-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/4acb2d68-0011-4003-9d58-534a03018e35_rw_1920.png?h=725f87f956823136540a23a7266a1552"></div>
-<div class="thumb" data-category="irl" data-date="1017-06-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/512a2897-fc49-4340-b300-e817e7ded501_rw_1920.png?h=2f8b0825872c80d5b526820c8b12ac1c"></div>
-<div class="thumb" data-category="storytelling" data-date="1018-03-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/355a9187-1200-4a91-8635-1acc3ca576ae_rw_1920.png?h=3df6edbaab4007c455c6db23fc89c998"></div>
-<div class="thumb" data-category="irl gaming" data-date="1018-04-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/0dbad44b-6b63-4f58-8e88-c72dab76683b_rw_1920.png?h=d59f1e55f761cfb58495e702c2d38311"></div>
-<div class="thumb" data-category="irl" data-date="1018-05-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/03b35f10-e9de-4a39-8e70-932b8ab2b45b_rw_1920.png?h=f384a9cde7efa0575186b722f1b565b6"></div>
-<div class="thumb" data-category="gaming" data-date="1018-06-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/2adb6950-fb9e-431d-85b9-601ca1196826_rw_1920.png?h=a9a3251d2b58dccb902364599cc87734"></div>
-<div class="thumb" data-category="gaming" data-date="1019-03-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/0b76d4fe-7c7a-455d-b7ba-34eccef19b56_rw_1920.png?h=44784a60218b53d3f84809709ec93fa8"></div>
-<div class="thumb" data-category="popculture" data-date="1019-04-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/08cec389-840f-44dd-8c2a-67f325737d99_rw_1920.png?h=6980721f01d6b2a518ea7a545ed33f1c"></div>
-<div class="thumb" data-category="business" data-date="1019-05-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/e03b3d1b-4b8a-4325-8330-f72d28c111be_rw_1920.png?h=322b351de1ca17a3841a5eacec3db83c"></div>
-<div class="thumb" data-category="gaming" data-date="1020-06-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/e03b3d1b-4b8a-4325-8330-f72d28c111be_rw_1920.png?h=322b351de1ca17a3841a5eacec3db83c"></div>
-<div class="thumb" data-category="popculture" data-date="1020-03-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/96e18d43-d6de-49e8-9c15-81ba286839c2_rw_1920.png?h=19d0a6f96980d9312e6bfcdc50cd6ab3"></div>
-<div class="thumb" data-category="irl business" data-date="1020-04-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/ebb318cf-625a-46cb-b231-b526e8be1055_rw_1920.png?h=c76c317fcddc4cfd792f26cda1716919"></div>
-<div class="thumb" data-category="gaming" data-date="1020-05-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/3fd5733a-1ea9-4144-abeb-656f12bfd611_rw_1920.png?h=3ceba7313ee8c884688232b5ad862b40"></div>
-<div class="thumb" data-category="gaming" data-date="1020-06-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/5d2de890-9368-4d9a-8356-b06d59e8b3b5_rw_1920.png?h=5fa64790322fd6b00bb45fa1aba1f61e"></div>
-<div class="thumb" data-category="gaming" data-date="1021-03-20"><img src="https://cdn.discordapp.com/attachments/1460223704448372801/1470531716538957989/image.png?ex=69b08ce2&is=69af3b62&hm=7f469c6e69ac69e4970c6e652184f152800589b5763adae904502c5b9ca4d70a&"></div>
-<div class="thumb" data-category="gaming" data-date="1021-04-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/44aa96e7-2136-4fe6-b912-b940c8dd932e_rw_1920.png?h=fcd5fb64e28722d5778b93b8c2893fc3"></div>
-<div class="thumb" data-category="gaming irl" data-date="1021-05-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/e98ce205-5b26-4bb1-a5e3-518f0f51251b_rw_1920.png?h=f9d949242c70a76acac09ad7f5ae0d5c"></div>
-<div class="thumb" data-category="gaming" data-date="1021-06-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/d7de0e40-c274-42a6-b5b5-5c32b064ded4_rw_1920.png?h=08be9d9a2df776b702c481f7c2e7965c"></div>
-<div class="thumb" data-category="business" data-date="1023-03-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/ffba8f8c-516b-4eb8-bd8a-ceb1da95b864_rw_1920.png?h=4575ffafd4172593e2c2f656d26c68de"></div>
-<div class="thumb" data-category="business" data-date="1023-04-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/94629b62-fc28-4a93-abda-b8b1d342a737_rw_1920.png?h=40d7ad1e0b47d8fc04c0e5d29e665582"></div>
-<div class="thumb" data-category="business" data-date="1023-05-20"><img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/19737152-86b3-44a7-a603-57772c924ab4_rw_1920.png?h=73b2fd41e99d737e07619109efdada16"></div>
-
-
-
-</section>
-
-<div class="lightbox" id="lightbox">
-<img src="" id="lightbox-img">
-</div>
-
-<footer>
-© 2026 Serja
-</footer>
-
-<script>
-
-/* TRI PAR DATE (PLUS RECENT D'ABORD) */
-
-const gallery = document.getElementById('gallery');
-const thumbsArray = Array.from(gallery.querySelectorAll('.thumb'));
-
-thumbsArray
-.sort((a,b)=> new Date(b.dataset.date||0) - new Date(a.dataset.date||0))
-.forEach(el=>gallery.appendChild(el));
-
-const buttons = document.querySelectorAll('.filter-btn');
-const items = document.querySelectorAll('.thumb');
-
-buttons.forEach(btn=>{
-btn.addEventListener('click',()=>{
-buttons.forEach(b=>b.classList.remove('active'));
-btn.classList.add('active');
-const filter = btn.dataset.filter;
-items.forEach(item=>{
-if(filter==='all'){
-item.classList.remove('hidden');
-return;
-}
-const categories = (item.dataset.category || "").split(" ");
-if(categories.includes(filter)){
-item.classList.remove('hidden');
-}else{
-item.classList.add('hidden');
-}
-});
-});
-});
-
-/* ANIMATION AU SCROLL */
-
-const observer = new IntersectionObserver(entries => {
-entries.forEach(entry => {
-if(entry.isIntersecting){
-entry.target.classList.add('visible');
-}
-});
-});
-
-items.forEach(el=>observer.observe(el));
-
-
-
-/* LIGHTBOX */
-
-const lightbox=document.getElementById('lightbox');
-const lightboxImg=document.getElementById('lightbox-img');
-
-items.forEach(item=>{
-item.addEventListener('click',()=>{
-const img=item.querySelector('img');
-lightboxImg.src=img.src;
-lightbox.classList.add('active');
-});
-});
-
-lightbox.addEventListener('click',()=>{
-lightbox.classList.remove('active');
-});
-
-</script>
+  <div class="navbar">
+    <a class="logo" href="#top">Serja.</a>
+
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#gallery-section">Réalisations</a>
+      <a href="#testimonials">Avis</a>
+      <a href="#contact" class="nav-contact">Contact</a>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-content reveal">
+      <div class="hero-badge">Disponible pour nouveaux projets</div>
+      <h1>Je crée des visuels qui <span>attirent le clic</span> et marquent les esprits.</h1>
+      <p class="hero-subtitle">
+        Miniatures, illustrations et visuels premium pour YouTubeurs, créateurs et marques.
+        Mon objectif : te faire ressortir avec une identité forte, lisible et mémorable.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#gallery-section" class="btn-primary">Voir mes réalisations</a>
+        <a href="#contact" class="btn-secondary">Me contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="stats reveal">
+      <div class="stat">
+        <strong>200+</strong>
+        <span>Projets réalisés</span>
+      </div>
+      <div class="stat">
+        <strong>50+</strong>
+        <span>Créateurs accompagnés</span>
+      </div>
+      <div class="stat">
+        <strong>100%</strong>
+        <span>Visuels sur mesure</span>
+      </div>
+      <div class="stat">
+        <strong>24h</strong>
+        <span>Réponse rapide</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="trusted-wrapper">
+    <div class="trusted-container">
+      <div class="trusted-inner">
+        <h2 class="section-title-left">Ils m'ont fait confiance</h2>
+
+        <section class="trusted-section">
+          <div class="scroll">
+
+            <div class="creator">
+              <img src="https://yt3.googleusercontent.com/PfrgbkgW91pHwXhns9BNZf7OXmGkNQnolItthHARTKNfIsHDOWJ_fmPeB4pWUGeyTdW3Z39Q4Q=s900-c-k-c0x00ffffff-no-rj" alt="Josplay">
+              <span class="creator-name">Josplay</span>
+              <span class="creator-subs">540 k abonnés</span>
+            </div>
+
+            <div class="creator">
+              <img src="https://yt3.googleusercontent.com/8984FP2UaboitXapymaBcNPlolyhQ54_STgdsJnHxop-7w2sbInmd8et1ab4YKGmplFweg_F=s900-c-k-c0x00ffffff-no-rj" alt="Litsu">
+              <span class="creator-name">Litsu</span>
+              <span class="creator-subs">530 k abonnés</span>
+            </div>
+
+            <div class="creator">
+              <img src="https://yt3.googleusercontent.com/xKOdYSe_FypifiipEepA02FfQpR0kqmjTyNcAyks8rEN-fPRewJbDFGjkK3-BUaLduw1sTGM8Q=s900-c-k-c0x00ffffff-no-rj" alt="Hika">
+              <span class="creator-name">Hika</span>
+              <span class="creator-subs">860k k abonnés</span>
+            </div>
+
+            <div class="creator">
+              <img src="https://yt3.googleusercontent.com/ExLzleUGzfSykdDeo_XCOkCHX73y4BgZAbwpjuz3IHP3pIyNPmr3KJ5hr-WFl9K6ENgkgHJv=s900-c-k-c0x00ffffff-no-rj" alt="Clinko">
+              <span class="creator-name">Clinko</span>
+              <span class="creator-subs">341 k abonnés</span>
+            </div>
+
+            <div class="creator">
+              <img src="https://yt3.googleusercontent.com/TV7MUGfZjW-YxuumKNrtAi9qJDM-CX5XcpmGVjJGuXC8hUxI6gECCGiKbUHdzyQ42W3-zpZB=s900-c-k-c0x00ffffff-no-rj" alt="Croshoot">
+              <span class="creator-name">Croshoot</span>
+              <span class="creator-subs">302 k abonnés</span>
+            </div>
+
+            <div class="creator">
+              <img src="https://yt3.googleusercontent.com/Z10IRPnEvnmSu2GnThOCkHnuolrzfZGNiPTg6vy5xiQ0Y4u5ccEMfsaf05QlHb7tWbo6ooTsxA=s900-c-k-c0x00ffffff-no-rj" alt="Chadscience">
+              <span class="creator-name">Chadscience</span>
+              <span class="creator-subs">100 k abonnés</span>
+            </div>
+
+            <div class="creator">
+              <img src="https://yt3.googleusercontent.com/X5CTp0ffLlyYy5dYgu-nhpcJB-hWALMADLCZd3AI-BxA4U4ZZXkZe6FQ2uijGxIFfunZzeEMlg=s900-c-k-c0x00ffffff-no-rj" alt="Lamatrak">
+              <span class="creator-name">Lamatrak</span>
+              <span class="creator-subs">170 k abonnés</span>
+            </div>
+
+            <div class="creator">
+              <img src="https://yt3.googleusercontent.com/C2CqxGpLNePGJFsRQUCs3YvEzbl8puonodXAMYiuv_rhFBTxiO9ckabbh3YUhbb8RuNA1_Bmtw=s900-c-k-c0x00ffffff-no-rj" alt="Litsu Roblox">
+              <span class="creator-name">Litsu Roblox</span>
+              <span class="creator-subs">115 k abonnés</span>
+            </div>
+
+            <div class="creator">
+              <img src="https://yt3.googleusercontent.com/DZZCfFhsa-Ba199jWRPHJQ85fSlSBrl59dqtP-G0juJyh_En3AsHDEgIVLxPVHoHsKPMRLfFDw=s900-c-k-c0x00ffffff-no-rj" alt="Naoxo">
+              <span class="creator-name">Naoxo</span>
+              <span class="creator-subs">191 k abonnés</span>
+            </div>
+
+            <div class="creator">
+              <img src="https://yt3.googleusercontent.com/0T4Gq9O0GxkCBBuB5TxLpf-AMv_LpuOCNDMLOhIxUGk8j6xkSehfYqhwOkunwxy75ZlITKbtntY=s900-c-k-c0x00ffffff-no-rj" alt="Diams">
+              <span class="creator-name">Diams</span>
+              <span class="creator-subs">70 k abonnés</span>
+            </div>
+
+            <div class="creator">
+              <img src="https://yt3.googleusercontent.com/GxFSQ7r5T6w_wQhrz9tvi3Nar8xF-DaI1nDFRqC5aBjn2ogqeAulNzqlriC7iJsHzCS00VUY4RA=s900-c-k-c0x00ffffff-no-rj" alt="Peurle">
+              <span class="creator-name">Peurle</span>
+              <span class="creator-subs">142 k abonnés</span>
+            </div>
+
+            <div class="creator">
+              <img src="https://yt3.googleusercontent.com/PfrgbkgW91pHwXhns9BNZf7OXmGkNQnolItthHARTKNfIsHDOWJ_fmPeB4pWUGeyTdW3Z39Q4Q=s900-c-k-c0x00ffffff-no-rj" alt="Josplay">
+              <span class="creator-name">Josplay</span>
+              <span class="creator-subs">540 k abonnés</span>
+            </div>
+
+            <div class="creator">
+              <img src="https://yt3.googleusercontent.com/8984FP2UaboitXapymaBcNPlolyhQ54_STgdsJnHxop-7w2sbInmd8et1ab4YKGmplFweg_F=s900-c-k-c0x00ffffff-no-rj" alt="Litsu">
+              <span class="creator-name">Litsu</span>
+              <span class="creator-subs">530 k abonnés</span>
+            </div>
+
+            <div class="creator">
+              <img src="https://yt3.googleusercontent.com/xKOdYSe_FypifiipEepA02FfQpR0kqmjTyNcAyks8rEN-fPRewJbDFGjkK3-BUaLduw1sTGM8Q=s900-c-k-c0x00ffffff-no-rj" alt="Hika">
+              <span class="creator-name">Hika</span>
+              <span class="creator-subs">860 k abonnés</span>
+            </div>
+
+            <div class="creator">
+              <img src="https://yt3.googleusercontent.com/ExLzleUGzfSykdDeo_XCOkCHX73y4BgZAbwpjuz3IHP3pIyNPmr3KJ5hr-WFl9K6ENgkgHJv=s900-c-k-c0x00ffffff-no-rj" alt="Clinko">
+              <span class="creator-name">Clinko</span>
+              <span class="creator-subs">341 k abonnés</span>
+            </div>
+
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" id="services">
+    <div class="container">
+      <h2 class="section-title-center reveal">Mes services</h2>
+      <p class="section-subtitle reveal">
+        Des visuels pensés pour renforcer ton image, capter l’attention et donner une vraie identité à ton contenu.
+      </p>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">🎯</div>
+          <h3>Miniatures YouTube</h3>
+          <p>Des miniatures fortes, lisibles et percutantes pour augmenter le taux de clic et améliorer ton image de marque.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">🖌️</div>
+          <h3>Illustrations cartoon</h3>
+          <p>Un style unique et reconnaissable pour créer une vraie identité visuelle autour de ta chaîne ou de ton projet.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">🚀</div>
+          <h3>Branding créateur</h3>
+          <p>Photo de profil, bannière, pack visuel et direction artistique complète pour te différencier durablement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="gallery-section">
+    <div class="container">
+      <h2 class="section-title-center reveal">Mes réalisations</h2>
+      <p class="section-subtitle reveal">
+        Une sélection de projets réalisés pour différentes niches : gaming, storytelling, IRL, business, dessin et pop culture.
+      </p>
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">Tout</button>
+      <button class="filter-btn" data-filter="gaming">Gaming</button>
+      <button class="filter-btn" data-filter="irl">IRL</button>
+      <button class="filter-btn" data-filter="storytelling">Storytelling</button>
+      <button class="filter-btn" data-filter="popculture">Popculture</button>
+      <button class="filter-btn" data-filter="dessin">Dessin</button>
+      <button class="filter-btn" data-filter="business">Business</button>
+      <button class="filter-btn" data-filter="autre">Autre</button>
+    </div>
+
+    <section class="gallery" id="gallery">
+
+      <div class="thumb" data-category="storytelling" data-date="1000-03-01">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/2745cf0d-1c5c-4e34-aee4-4366c474070b_rw_1920.png?h=6eb4b97d9e4eccc6c6ca6e9b798c1a00" alt="Projet storytelling">
+      </div>
+
+      <div class="thumb" data-category="popculture" data-date="1001-02-10">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/6c646f3c-574a-46c7-876b-0b74084f8882_rw_1920.png?h=4095d24b42571036ce2222cc680b2e67" alt="Projet popculture">
+      </div>
+
+      <div class="thumb" data-category="storytelling" data-date="1002-01-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/78490211-9220-4b2d-8e23-8cee268a0b4a_rw_1920.png?h=467de757998db1d7965c1ed3b3a4a1f8" alt="Projet storytelling">
+      </div>
+
+      <div class="thumb" data-category="storytelling dessin" data-date="1003-01-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/bb0c908a-3d40-46d6-8de3-639dcc54d0f3_rw_1920.png?h=c56d7077e09e339e3ce1b7288211feda" alt="Projet storytelling dessin">
+      </div>
+
+      <div class="thumb" data-category="gaming" data-date="1004-01-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/a3d5c985-14a6-44fe-9bac-bcbf49637723_rw_1920.png?h=1edecaa6509623911d0a88a0ebaea106" alt="Projet gaming">
+      </div>
+
+      <div class="thumb" data-category="gaming dessin" data-date="1005-01-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/4b1ecf13-8b3d-4233-9623-a76fca8bf577_rw_1920.png?h=2487d0e3d9f9c83da31d384954d31326" alt="Projet gaming dessin">
+      </div>
+
+      <div class="thumb" data-category="gaming" data-date="1006-01-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/d1f5c6ed-d39a-459a-8ad8-54ccf31b9092_rw_1920.png?h=aa857cb7a085b88ee6d375e358b08f0d" alt="Projet gaming">
+      </div>
+
+      <div class="thumb" data-category="irl" data-date="1007-01-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/ed3981d9-9aca-4492-882a-4bd29529957e_rw_1920.png?h=6ac46400aaa4797d100fadcaaaa25da7" alt="Projet irl">
+      </div>
+
+      <div class="thumb" data-category="irl" data-date="1008-01-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/ce3c44b0-741e-46d4-a2d8-3bfbf209a0ef_rw_1920.png?h=91844f9455ada1c66e97e510096a829e" alt="Projet irl">
+      </div>
+
+      <div class="thumb" data-category="business" data-date="1009-01-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/6da1a7c0-19e5-424a-a013-26a696ff958b_rw_1920.png?h=e5ac9dc483733315389963e55909aea4" alt="Projet business">
+      </div>
+
+      <div class="thumb" data-category="irl gaming" data-date="1010-01-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/9615c0f9-3d70-4b6c-a3af-b1814db6e546_rw_1920.png?h=3e978e13dfc2584f398c0e7ab94bcce5" alt="Projet mixte">
+      </div>
+
+      <div class="thumb" data-category="gaming" data-date="1011-01-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/b6cccf2a-4f1c-48bd-abed-88bd33c85182_rw_1920.png?h=d6e276c802622e599483a967cd65048b" alt="Projet gaming">
+      </div>
+
+      <div class="thumb" data-category="popculture" data-date="1012-01-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/882e33db-3a13-496d-843b-e5f9438d9724_rw_1920.png?h=c333e526bee8f6bb1e4da52774caa8ac" alt="Projet popculture">
+      </div>
+
+      <div class="thumb" data-category="storytelling" data-date="1003-01-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/9d8f23b1-0391-41ef-9278-9e9f6885d496_rw_1920.png?h=cac3a0e4cf1683911ca5c06fa980a6b1" alt="Projet storytelling">
+      </div>
+
+      <div class="thumb" data-category="storytelling" data-date="1003-03-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/e5617d10-e052-4eac-b114-1bbb31a31d09_rw_1920.png?h=77b9dbda783f8370737163336a73c746" alt="Projet storytelling">
+      </div>
+
+      <div class="thumb" data-category="popculture" data-date="1015-01-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/f6bf15e8-d83b-434d-b79b-53130f79a2f6_rw_1920.png?h=5b10e27c18f29cc6a6919e8caaa3226e" alt="Projet popculture">
+      </div>
+
+      <div class="thumb" data-category="storytelling" data-date="1016-01-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/3b417de9-2993-4eb6-a25f-5bd295240a8c_rw_1920.png?h=c8ecd513304c46d22f2d3b689f9c99f3" alt="Projet storytelling">
+      </div>
+
+      <div class="thumb" data-category="gaming" data-date="1016-02-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/61830220-7e13-4822-961c-c529b408893f_rw_1920.png?h=df0db7424f329e4c70880b847f820c2f" alt="Projet gaming">
+      </div>
+
+      <div class="thumb" data-category="gaming" data-date="1016-03-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/591e73c4-13de-4710-bafe-22823b22384b_rw_1920.png?h=367877acb97eee1b492bb1e142421866" alt="Projet gaming">
+      </div>
+
+      <div class="thumb" data-category="gaming" data-date="1016-04-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/e1aa487d-7c8a-4e11-9a14-864fc55aae37_rw_1920.png?h=1788b48380cd0d54c9588a772d5f412f" alt="Projet gaming">
+      </div>
+
+      <div class="thumb" data-category="gaming" data-date="1016-05-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/ccb1f207-afb3-40db-bbc9-ff60a4bd32f6_rw_1920.png?h=5ce83dfa87a2c01f97bec3228979fe63" alt="Projet gaming">
+      </div>
+
+      <div class="thumb" data-category="gaming" data-date="1016-06-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/3c663102-7eb5-4264-bf43-9334e47623eb_rw_1920.png?h=865a86fc0103ca35cf7eb9fad1df503c" alt="Projet gaming">
+      </div>
+
+      <div class="thumb" data-category="dessin" data-date="1016-03-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/68b58279-9033-4371-a0fb-2302d8817528_rw_1920.png?h=5d636a5b0fe3df79a6c822c0139cc761" alt="Projet dessin">
+      </div>
+
+      <div class="thumb" data-category="dessin" data-date="1016-04-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/cc6d75db-2116-49fe-8adf-89b0eb21b246_rw_1920.png?h=7af7407ca0864c1ff4e965894b07a133" alt="Projet dessin">
+      </div>
+
+      <div class="thumb" data-category="dessin" data-date="1016-05-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/69c2d977-895c-41eb-ac9e-f9769cf357c3_rw_1920.png?h=0f69d4628c2922568c521118c05a19cd" alt="Projet dessin">
+      </div>
+
+      <div class="thumb" data-category="dessin" data-date="1016-06-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/281e6ff2-f304-4979-9e26-c6e0b2a63040_rw_1920.jpg?h=7c162333abf15687a13d9159857df721" alt="Projet dessin">
+      </div>
+
+      <div class="thumb" data-category="dessin" data-date="1016-03-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/678494fc-453d-4312-b0d3-ec0c6cb0d43c_rw_1920.png?h=85eed79aab262dda8744c1d7625a11a1" alt="Projet dessin">
+      </div>
+
+      <div class="thumb" data-category="dessin" data-date="1016-04-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/2f7d6ba1-2824-4cae-a3ea-b20a04aaad07_rw_1920.png?h=a7324a2fbb6bf6b803e542a05157e63e" alt="Projet dessin">
+      </div>
+
+      <div class="thumb" data-category="dessin" data-date="1016-05-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/75cc885b-f8cb-495c-b4c4-5cc098cf58d3_rw_1920.png?h=170fc2affce28384beef57f91216a06a" alt="Projet dessin">
+      </div>
+
+      <div class="thumb" data-category="dessin" data-date="1016-06-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/76fb8adf-07bc-4359-a7f3-8a0777ca94f0_rw_1920.png?h=c2468cf7bfd0b1d14698bf3521595b68" alt="Projet dessin">
+      </div>
+
+      <div class="thumb" data-category="irl" data-date="1017-03-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/f37f9e77-cd1f-4d7d-83e3-85477db2e1ed_rw_1920.png?h=e0225d496ff0fa5067b16d76947d5326" alt="Projet irl">
+      </div>
+
+      <div class="thumb" data-category="storytelling" data-date="1017-04-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/2d802daf-3505-478d-8d50-82f14fa72259_rw_1920.png?h=4028f565468a597cad1c26a228b23036" alt="Projet storytelling">
+      </div>
+
+      <div class="thumb" data-category="gaming irl" data-date="1017-05-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/4acb2d68-0011-4003-9d58-534a03018e35_rw_1920.png?h=725f87f956823136540a23a7266a1552" alt="Projet gaming irl">
+      </div>
+
+      <div class="thumb" data-category="irl" data-date="1017-06-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/512a2897-fc49-4340-b300-e817e7ded501_rw_1920.png?h=2f8b0825872c80d5b526820c8b12ac1c" alt="Projet irl">
+      </div>
+
+      <div class="thumb" data-category="storytelling" data-date="1018-03-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/355a9187-1200-4a91-8635-1acc3ca576ae_rw_1920.png?h=3df6edbaab4007c455c6db23fc89c998" alt="Projet storytelling">
+      </div>
+
+      <div class="thumb" data-category="irl gaming" data-date="1018-04-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/0dbad44b-6b63-4f58-8e88-c72dab76683b_rw_1920.png?h=d59f1e55f761cfb58495e702c2d38311" alt="Projet irl gaming">
+      </div>
+
+      <div class="thumb" data-category="irl" data-date="1018-05-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/03b35f10-e9de-4a39-8e70-932b8ab2b45b_rw_1920.png?h=f384a9cde7efa0575186b722f1b565b6" alt="Projet irl">
+      </div>
+
+      <div class="thumb" data-category="gaming" data-date="1018-06-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/2adb6950-fb9e-431d-85b9-601ca1196826_rw_1920.png?h=a9a3251d2b58dccb902364599cc87734" alt="Projet gaming">
+      </div>
+
+      <div class="thumb" data-category="gaming" data-date="1019-03-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/0b76d4fe-7c7a-455d-b7ba-34eccef19b56_rw_1920.png?h=44784a60218b53d3f84809709ec93fa8" alt="Projet gaming">
+      </div>
+
+      <div class="thumb" data-category="popculture" data-date="1019-04-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/08cec389-840f-44dd-8c2a-67f325737d99_rw_1920.png?h=6980721f01d6b2a518ea7a545ed33f1c" alt="Projet popculture">
+      </div>
+
+      <div class="thumb" data-category="business" data-date="1019-05-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/e03b3d1b-4b8a-4325-8330-f72d28c111be_rw_1920.png?h=322b351de1ca17a3841a5eacec3db83c" alt="Projet business">
+      </div>
+
+      <div class="thumb" data-category="gaming" data-date="1020-06-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/e03b3d1b-4b8a-4325-8330-f72d28c111be_rw_1920.png?h=322b351de1ca17a3841a5eacec3db83c" alt="Projet gaming">
+      </div>
+
+      <div class="thumb" data-category="popculture" data-date="1020-03-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/96e18d43-d6de-49e8-9c15-81ba286839c2_rw_1920.png?h=19d0a6f96980d9312e6bfcdc50cd6ab3" alt="Projet popculture">
+      </div>
+
+      <div class="thumb" data-category="irl business" data-date="1020-04-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/ebb318cf-625a-46cb-b231-b526e8be1055_rw_1920.png?h=c76c317fcddc4cfd792f26cda1716919" alt="Projet irl business">
+      </div>
+
+      <div class="thumb" data-category="gaming" data-date="1020-05-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/3fd5733a-1ea9-4144-abeb-656f12bfd611_rw_1920.png?h=3ceba7313ee8c884688232b5ad862b40" alt="Projet gaming">
+      </div>
+
+      <div class="thumb" data-category="gaming" data-date="1020-06-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/5d2de890-9368-4d9a-8356-b06d59e8b3b5_rw_1920.png?h=5fa64790322fd6b00bb45fa1aba1f61e" alt="Projet gaming">
+      </div>
+
+      <div class="thumb" data-category="gaming" data-date="1021-03-20">
+        <img src="https://cdn.discordapp.com/attachments/1460223704448372801/1470531716538957989/image.png?ex=69b08ce2&is=69af3b62&hm=7f469c6e69ac69e4970c6e652184f152800589b5763adae904502c5b9ca4d70a&" alt="Projet gaming">
+      </div>
+
+      <div class="thumb" data-category="gaming" data-date="1021-04-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/44aa96e7-2136-4fe6-b912-b940c8dd932e_rw_1920.png?h=fcd5fb64e28722d5778b93b8c2893fc3" alt="Projet gaming">
+      </div>
+
+      <div class="thumb" data-category="gaming irl" data-date="1021-05-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/e98ce205-5b26-4bb1-a5e3-518f0f51251b_rw_1920.png?h=f9d949242c70a76acac09ad7f5ae0d5c" alt="Projet gaming irl">
+      </div>
+
+      <div class="thumb" data-category="gaming" data-date="1021-06-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/d7de0e40-c274-42a6-b5b5-5c32b064ded4_rw_1920.png?h=08be9d9a2df776b702c481f7c2e7965c" alt="Projet gaming">
+      </div>
+
+      <div class="thumb" data-category="business" data-date="1023-03-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/ffba8f8c-516b-4eb8-bd8a-ceb1da95b864_rw_1920.png?h=4575ffafd4172593e2c2f656d26c68de" alt="Projet business">
+      </div>
+
+      <div class="thumb" data-category="business" data-date="1023-04-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/94629b62-fc28-4a93-abda-b8b1d342a737_rw_1920.png?h=40d7ad1e0b47d8fc04c0e5d29e665582" alt="Projet business">
+      </div>
+
+      <div class="thumb" data-category="business" data-date="1023-05-20">
+        <img src="https://cdn.myportfolio.com/1d8d1467-8583-4e49-b15b-6d54b1623cb5/19737152-86b3-44a7-a603-57772c924ab4_rw_1920.png?h=73b2fd41e99d737e07619109efdada16" alt="Projet business">
+      </div>
+
+    </section>
+  </section>
+
+  <section class="section" id="testimonials">
+    <div class="container">
+      <h2 class="section-title-center reveal">Avis clients</h2>
+      <p class="section-subtitle reveal">
+        Quelques retours de créateurs satisfaits par la qualité, la rapidité et le rendu final.
+      </p>
+
+      <div class="reviews-slider reveal">
+        <div class="reviews-track">
+
+          <div class="review-card">
+            <div class="review-quote">❞</div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Parfait, toujours plus accrocheurs les uns que les autres et ultra motivé !"</p>
+            <div class="review-footer">
+              <img src="https://yt3.googleusercontent.com/TV7MUGfZjW-YxuumKNrtAi9qJDM-CX5XcpmGVjJGuXC8hUxI6gECCGiKbUHdzyQ42W3-zpZB=s900-c-k-c0x00ffffff-no-rj" alt="Croshoot">
+              <div>
+                <h4>Croshoot</h4>
+                <span>YouTubeur Gaming 300k</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-quote">❞</div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Travail ultra propre, très rapide et résultat au-dessus de mes attentes."</p>
+            <div class="review-footer">
+              <img src="https://yt3.googleusercontent.com/8984FP2UaboitXapymaBcNPlolyhQ54_STgdsJnHxop-7w2sbInmd8et1ab4YKGmplFweg_F=s900-c-k-c0x00ffffff-no-rj" alt="Litsu">
+              <div>
+                <h4>Litsu</h4>
+                <span>YouTubeur IRL/Gaming 700k</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-quote">❞</div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Visuel parfait et optimisé , c'est pas un hasard si ma vidéo à explosé !"</p>
+            <div class="review-footer">
+              <img src="https://yt3.googleusercontent.com/xKOdYSe_FypifiipEepA02FfQpR0kqmjTyNcAyks8rEN-fPRewJbDFGjkK3-BUaLduw1sTGM8Q=s900-c-k-c0x00ffffff-no-rj" alt="Hika">
+              <div>
+                <h4>Hika</h4>
+                <span>Créateur de contenu +50 chaines , +50M</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-quote">❞</div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Reproduis à 100% la vision que j'avais de la miniature , très clean."</p>
+            <div class="review-footer">
+              <img src="https://yt3.googleusercontent.com/ExLzleUGzfSykdDeo_XCOkCHX73y4BgZAbwpjuz3IHP3pIyNPmr3KJ5hr-WFl9K6ENgkgHJv=s900-c-k-c0x00ffffff-no-rj" alt="Clinko">
+              <div>
+                <h4>Clinko</h4>
+                <span>YouTubeur IRL/Gaming 341k</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-quote">❞</div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Parfait, toujours plus accrocheurs les uns que les autres et ultra motivé !"</p>
+            <div class="review-footer">
+              <img src="https://yt3.googleusercontent.com/TV7MUGfZjW-YxuumKNrtAi9qJDM-CX5XcpmGVjJGuXC8hUxI6gECCGiKbUHdzyQ42W3-zpZB=s900-c-k-c0x00ffffff-no-rj" alt="Croshoot">
+              <div>
+                <h4>Croshoot</h4>
+                <span>YouTubeur Gaming 300k</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-quote">❞</div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Travail ultra propre, très rapide et résultat au-dessus de mes attentes."</p>
+            <div class="review-footer">
+              <img src="https://yt3.googleusercontent.com/8984FP2UaboitXapymaBcNPlolyhQ54_STgdsJnHxop-7w2sbInmd8et1ab4YKGmplFweg_F=s900-c-k-c0x00ffffff-no-rj" alt="Litsu">
+              <div>
+                <h4>Litsu</h4>
+                <span>YouTubeur</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-quote">❞</div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Très bonne compréhension de mon univers, la miniature était parfaite."</p>
+            <div class="review-footer">
+              <img src="https://yt3.googleusercontent.com/xKOdYSe_FypifiipEepA02FfQpR0kqmjTyNcAyks8rEN-fPRewJbDFGjkK3-BUaLduw1sTGM8Q=s900-c-k-c0x00ffffff-no-rj" alt="Hika">
+              <div>
+                <h4>Hika</h4>
+                <span>Créateur de contenu</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-quote">❞</div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Super efficace, super clean, communication nickel du début à la fin."</p>
+            <div class="review-footer">
+              <img src="https://yt3.googleusercontent.com/ExLzleUGzfSykdDeo_XCOkCHX73y4BgZAbwpjuz3IHP3pIyNPmr3KJ5hr-WFl9K6ENgkgHJv=s900-c-k-c0x00ffffff-no-rj" alt="Clinko">
+              <div>
+                <h4>Clinko</h4>
+                <span>YouTubeur</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact-box reveal">
+        <h2 class="section-title-center">On travaille ensemble ?</h2>
+        <p>
+          Je suis disponible pour créer tes miniatures, illustrations, bannières ou ton identité
+          visuelle complète. Pour une commande ou une question, contacte-moi directement.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="mailto:contact.serja@gmail.com?subject=Demande%20de%20commande" class="btn-primary">M'envoyer un mail</a>
+        </div>
+
+        <div class="contact-info">
+          <div class="contact-chip">💬 Discord : serja23</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="lightbox" id="lightbox">
+    <img src="" id="lightbox-img" alt="Image agrandie">
+  </div>
+
+  <footer>
+    © 2026 Serja — Designer & Illustrator for creators.
+  </footer>
+
+  <script>
+    const gallery = document.getElementById('gallery');
+    const thumbsArray = Array.from(gallery.querySelectorAll('.thumb'));
+
+    thumbsArray
+      .sort((a,b)=> new Date(b.dataset.date || 0) - new Date(a.dataset.date || 0))
+      .forEach(el => gallery.appendChild(el));
+
+    const buttons = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.thumb');
+
+    buttons.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        buttons.forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+
+        items.forEach(item=>{
+          if(filter === 'all'){
+            item.classList.remove('hidden');
+            return;
+          }
+
+          const categories = (item.dataset.category || "").split(" ");
+          if(categories.includes(filter)){
+            item.classList.remove('hidden');
+          }else{
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    const revealElements = document.querySelectorAll('.thumb, .reveal');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealElements.forEach(el => observer.observe(el));
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    items.forEach(item=>{
+      item.addEventListener('click',()=>{
+        const img = item.querySelector('img');
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+      });
+    });
+
+    lightbox.addEventListener('click',()=>{
+      lightbox.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape'){
+        lightbox.classList.remove('active');
+      }
+    });
+  </script>
 
 </body>
 </html>
-
-
